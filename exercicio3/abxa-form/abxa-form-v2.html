@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>abxa - exercício 2</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                padding: 20px;
+            }
+
+            .form-container {
+                width: 600px;
+                margin: auto;
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            td {
+                padding: 10px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            input[type="text"], input[type="date"], textarea, select {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            input[type="range"] {
+                width: 100%;
+            }
+
+            .radio-group label, .checkbox-group label {
+                font-weight: normal;
+            }
+
+            .buttons-cell {
+                text-align: right;
+            }
+
+            input[type="submit"], input[type="reset"] {
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                color: #fff;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+
+            input[type="submit"] {
+                background-color: #28a745;
+            }
+
+            input[type="reset"] {
+                background-color: #dc3545;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="form-container">
+            <h1>Pesquisa de Satisfação</h1>
+            <form action="https://abxa-ex2.com/pesquisa" method="GET">
+                <table style="border: none;">
+                    <tr>
+                        <td>
+                            <label for="nome">Seu Nome:</label>
+                            <input type="text" id="nome" name="nome" maxlength="50" required>
+                        </td>
+                        <td>
+                            <label for="email">Seu E-mail:</label>
+                            <input type="text" id="email" name="email" maxlength="50" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="radio-group">
+                            <label>Como você soube de nós?</label>
+                            <input type="radio" id="midia-social" name="origem" value="midia-social"> <label for="midia-social" style="display: inline-block;">Mídias Sociais</label><br>
+                            <input type="radio" id="indicacao" name="origem" value="indicacao"> <label for="indicacao" style="display: inline-block;">Indicação de um amigo</label><br>
+                            <input type="radio" id="anuncio" name="origem" value="anuncio"> <label for="anuncio" style="display: inline-block;">Anúncio Online</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="checkbox-group">
+                            <label>Quais de nossos serviços você utilizou?</label>
+                            <input type="checkbox" id="atendimento" name="servicos" value="atendimento"> <label for="atendimento" style="display: inline-block;">Atendimento ao Cliente</label><br>
+                            <input type="checkbox" id="suporte" name="servicos" value="suporte"> <label for="suporte" style="display: inline-block;">Suporte Técnico</label><br>
+                            <input type="checkbox" id="compra" name="servicos" value="compra"> <label for="compra" style="display: inline-block;">Processo de Compra</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="data-uso">Data de Utilização do Serviço:</label>
+                            <input type="date" id="data-uso" name="data-uso">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="satisfacao">Nível de Satisfação Geral (1-100):</label>
+                            <input type="range" id="satisfacao" name="satisfacao" min="1" max="100" value="50">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="sugestoes">Comentários e Sugestões:</label>
+                            <textarea id="sugestoes" name="sugestoes" rows="4"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="departamento">Departamento Avaliado:</label>
+                            <select id="departamento" name="departamento">
+                                <option value="vendas">Vendas</option>
+                                <option value="suporte">Suporte Técnico</option>
+                                <option value="financeiro">Financeiro</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="buttons-cell">
+                            <input type="reset" value="Limpar Formulário">
+                            <input type="submit" value="Enviar Pesquisa">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

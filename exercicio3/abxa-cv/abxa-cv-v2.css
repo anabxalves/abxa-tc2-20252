@@ -1,0 +1,203 @@
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 2rem;
+    color: #4A4A4A;
+}
+
+h1 {
+    font-weight: 900;
+    color: #432e30;
+}
+
+h2 {
+    color: #432e30;
+    font-weight: 700;
+}
+
+h4 {
+    margin: 0;
+    color: #432e30;
+}
+
+p {
+    font-weight: 300;
+    text-align: center;
+}
+
+#header-left {
+    font-weight: bold;
+}
+
+header {
+    background-color: white;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav-item {
+    border-radius: 0.75rem;
+    color: #432e30;
+    display: inline-block;
+    padding: 0.5rem;
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+.nav-item:hover {
+    background-color: #debdc3;
+    border: 1px solid #432e30;
+}
+
+.icon-mail, .icon-linkedin, .icon-github {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+}
+
+.icon-mail { content: url('./arquivos/mail-icon.png'); }
+.icon-linkedin { content: url('./arquivos/linkedin-logo.png'); }
+.icon-github { content: url('./arquivos/github-mark.png'); }
+
+
+.banner-img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+}
+
+.section-row {
+    padding: 0 2rem;
+}
+
+.section-video {
+    width: 70%;
+    height: 450px;
+    border-radius: 1rem;
+    box-shadow: 0px 12px 36.8px 9.2px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: auto;
+}
+
+.profile-section {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.section-row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.section-column {
+    float: left;
+    width: 33.33%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.section-column-large {
+    float: left;
+    width: 70%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.section-column-small {
+    float: left;
+    width: 30%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+ul, ol {
+    text-align: start;
+}
+
+table td ul {
+    text-align: start;
+    padding-left: 20px;
+}
+
+.section-content h2 + ul, .section-content h2 + ol {
+    border-top: 2px solid #ccc;
+    padding-top: 1rem;
+}
+
+.section-content h2 {
+    text-align: center;
+}
+
+.abxa-formacao {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.abxa-formacao p {
+    text-align: start;
+    font-weight: 400;
+    font-style: italic;
+    margin: none;
+}
+
+.about-me {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.about-me p {
+    width: 70%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+}
+
+table thead {
+    background-color: #432e30;
+    color: white;
+    font-weight: bold;
+}
+
+table td ul {
+    text-align: start;
+    padding-left: 20px;
+}
+
+#abxa-video {
+    border: 5px solid #debdc3;
+    max-width: 840px;
+}
+
+.nav-item {
+    font-size: 14px;
+}
+
+#bottom-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#abxa-pdf {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-pdf {
+    width: 100%;
+    height: 20rem;
+    min-height: 320px;
+}
