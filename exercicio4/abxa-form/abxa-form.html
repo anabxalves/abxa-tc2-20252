@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>4º Exercício | Ana Beatriz Ximenes Alves</title>
+        <link rel="stylesheet" href="abxa-form.css">
+    </head>
+    <body>
+        <div class="container">
+            <form action="https://abxa-ex2.com/pesquisa" method="GET">
+                <h1>Pesquisa de Satisfação</h1>
+
+                <div class="form-grid">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" name="nome" maxlength="50" placeholder="Nome completo" required>
+
+                    <label for="email">Seu E-mail:</label>
+                    <input type="text" id="email" name="email" maxlength="50" placeholder="exemplo@email.com" required>
+
+                    <label for="data-uso">Data de Utilização do Serviço:</label>
+                    <input type="date" id="data-uso" name="data-uso">
+
+                    <label for="departamento">Departamento Avaliado:</label>
+                    <select id="departamento" name="departamento">
+                        <option value="vendas">Vendas</option>
+                        <option value="suporte">Suporte Técnico</option>
+                        <option value="financeiro">Financeiro</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group flex-group">
+                    <label>Como você soube de nós?</label>
+                    <div class="flex-options">
+                        <input type="radio" id="midia-social" name="origem" value="midia-social"> <label for="midia-social">Mídias Sociais</label>
+                        <input type="radio" id="indicacao" name="origem" value="indicacao"> <label for="indicacao">Indicação</label>
+                        <input type="radio" id="anuncio" name="origem" value="anuncio"> <label for="anuncio">Anúncio Online</label>
+                        <input type="radio" id="nenhum" name="origem" value="nenhum"> <label for="nenhum">Nenhum</label>
+                    </div>
+                </div>
+
+                <div class="form-group flex-group">
+                    <label>Quais de nossos serviços você utilizou?</label>
+                    <div class="flex-options">
+                        <input type="checkbox" id="atendimento" name="servicos" value="atendimento"> <label for="atendimento">Atendimento</label>
+                        <input type="checkbox" id="suporte" name="servicos" value="suporte"> <label for="suporte">Suporte Técnico</label>
+                        <input type="checkbox" id="compra" name="servicos" value="compra"> <label for="compra">Processo de Compra</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="satisfacao">Nível de Satisfação Geral:</label>
+                    <input type="range" id="satisfacao" name="satisfacao" min="1" max="100" value="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="sugestoes">Comentários e Sugestões:</label>
+                    <textarea id="sugestoes" name="sugestoes" placeholder="Escreva aqui..." rows="4"></textarea>
+                </div>
+
+                <div class="form-group clearfix">
+                    <input type="reset" value="Limpar" class="button button-reset">
+                    <input type="submit" value="Enviar" class="button button-submit">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
