@@ -1,0 +1,123 @@
+:root {
+    --cor-fundo: #F8F9FA;
+    --cor-card: #FFFFFF;
+    --cor-borda: #CCC;
+    --cor-letra-primaria: #34495E;
+    --cor-sucesso: #2ECC71;
+    --cor-erro: #E74C3C;
+}
+
+/**
+* CSS para Layout DESKTOP
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(to bottom right, var(--cor-fundo), #E9E9E9);
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: var(--cor-card);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--cor-letra-primaria);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.flex-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.flex-options {
+    display: flex;
+    gap: 15px;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+input[type="text"], input[type="date"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+.form-grid label {
+    font-weight: bold;
+    color: var(--cor-letra-primaria);
+    align-self: center;
+}
+
+.flex-options > input + label {
+    margin-left: -10px;
+}
+
+.button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    float: right;
+    transition: transform 0.3s;
+}
+
+.button-submit {
+    background-color: var(--cor-sucesso);
+}
+
+.button-reset {
+    background-color: var(--cor-erro);
+    margin-right: 10px;
+}
+
+.button-submit:hover {
+    transform: scale(1.05);
+}
+
+/**
+* CSS para Layout TABLET/CELULAR
+*/
+
+@media screen and (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flex-options {
+        flex-direction: column;
+    }
+
+    .button {
+        float: none;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
