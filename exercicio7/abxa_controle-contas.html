@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Controle de Contas Correntes</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #F3F4F6;
+            }
+            .container {
+                max-width: 900px;
+                margin: 2rem auto;
+                padding: 2rem;
+                background-color: #FFFFFF;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+            .table-container {
+                border: 1px solid #D1D5DB;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .table-header th {
+                cursor: pointer;
+                padding: 12px 16px;
+                background-color: #E5E7EB;
+                color: #1F2937;
+                font-weight: 600;
+                border-bottom: 1px solid #D1D5DB;
+            }
+            .table-row td {
+                padding: 12px 16px;
+                border-bottom: 1px solid #E5E7EB;
+            }
+            .table-row:last-child td {
+                border-bottom: none;
+            }
+            .button-group {
+                display: flex;
+                align-items: center;
+            }
+            .radio-label {
+                margin-right: 1rem;
+                display: flex;
+                align-items: center;
+            }
+            input[type="radio"] {
+                margin-right: 0.5rem;
+            }
+            .alert-box {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #F87171;
+                color: white;
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+                z-index: 1000;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Controle de Contas Correntes</h1>
+            <div class="bg-gray-100 p-6 rounded-lg mb-6 shadow-sm">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Realizar Operação</h2>
+                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+                    <input type="text" id="valorInput" placeholder="Valor" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="idNomeInput" placeholder="ID ou Nome do Correntista" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <div class="flex items-center space-x-4">
+                        <label class="radio-label">
+                            <input type="radio" name="operacao" value="credito" checked> Crédito
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="operacao" value="debito"> Débito
+                        </label>
+                    </div>
+
+                    <button id="operarBtn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+                        Crédito/Débito
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mb-6">
+                <button id="mostrarCriarContaBtn" class="bg-purple-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-purple-700 transition-colors">
+                    Adicionar nova Conta
+                </button>
+            </div>
+
+            <div id="criarContaSection" class="bg-gray-100 p-6 rounded-lg mb-6 shadow-sm hidden">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Criar Nova Conta</h2>
+                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+                    <input type="text" id="novaContaNomeInput" placeholder="Nome do Correntista" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="novaContaSaldoInput" placeholder="Saldo Inicial" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="criarContaBtn" class="bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition-colors">
+                        Criar Conta
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase table-header">
+                    <tr>
+                        <th scope="col" class="py-3 px-6" onclick="sortTable('id')">ID</th>
+                        <th scope="col" class="py-3 px-6" onclick="sortTable('nome')">Nome</th>
+                        <th scope="col" class="py-3 px-6" onclick="sortTable('saldo')">Saldo</th>
+                    </tr>
+                    </thead>
+                    <tbody id="contasTbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="alertModal" class="hidden">
+            <div class="alert-box">
+                <p id="alertMessage" class="text-lg font-bold mb-4"></p>
+                <button onclick="closeAlert()" class="bg-white text-gray-800 py-2 px-6 rounded-full shadow-md hover:bg-gray-100 transition-colors">OK</button>
+            </div>
+        </div>
+
+        <script>
+            function showAlert(message) {
+                const modal = document.getElementById('alertModal');
+                const msgElement = document.getElementById('alertMessage');
+                msgElement.innerText = message;
+                modal.classList.remove('hidden');
+            }
+
+            function closeAlert() {
+                const modal = document.getElementById('alertModal');
+                modal.classList.add('hidden');
+            }
+
+            class Conta {
+                constructor(id, nome, saldo) {
+                    this.id = id;
+                    this.nome = nome;
+                    this.saldo = saldo;
+                }
+
+                _validarValor(valor) {
+                    if (valor <= 0 || isNaN(valor)) {
+                        showAlert("Valor inválido. O valor deve ser maior que zero.");
+                        return false;
+                    }
+                    return true;
+                }
+
+                creditar(valor) {
+                    if (this._validarValor(valor)) {
+                        this.saldo += valor;
+                        return true;
+                    }
+                    return false;
+                }
+
+                debitar(valor) {
+                    if (this._validarValor(valor)) {
+                        if (valor > this.saldo) {
+                            showAlert("Saldo insuficiente para a operação.");
+                            return false;
+                        }
+                        this.saldo -= valor;
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            const contas = [
+                new Conta(101, "Gael Brasileiro", 500.50),
+                new Conta(102, "Alexandre Florencio", 24250.75),
+                new Conta(103, "Renata Lucas", 31000.00),
+                new Conta(104, "Rafael Ximenes", 5670.00),
+                new Conta(105, "Gabriel Lima", 8190.25)
+            ];
+
+            function getNewId() {
+                const maxId = contas.reduce((max, conta) => Math.max(max, conta.id), 100);
+                return maxId + 1;
+            }
+
+            function renderTable() {
+                const tbody = document.getElementById('contasTbody');
+                tbody.innerHTML = '';
+                contas.forEach(conta => {
+                    const row = document.createElement('tr');
+                    row.className = 'table-row hover:bg-gray-50 transition-colors';
+                    row.innerHTML = `
+                            <td class="py-3 px-6 whitespace-nowrap">${conta.id}</td>
+                            <td class="py-3 px-6 whitespace-nowrap">${conta.nome}</td>
+                            <td class="py-3 px-6 whitespace-nowrap">R$ ${conta.saldo.toFixed(2)}</td>
+                        `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            let sortOrder = 'asc';
+            function sortTable(key) {
+                if (sortOrder === 'asc') {
+                    contas.sort((a, b) => {
+                        if (a[key] < b[key]) return -1;
+                        if (a[key] > b[key]) return 1;
+                        return 0;
+                    });
+                    sortOrder = 'desc';
+                } else {
+                    contas.sort((a, b) => {
+                        if (a[key] > b[key]) return -1;
+                        if (a[key] < b[key]) return 1;
+                        return 0;
+                    });
+                    sortOrder = 'asc';
+                }
+                renderTable();
+            }
+
+            document.getElementById('operarBtn').addEventListener('click', () => {
+                const valorInput = document.getElementById('valorInput');
+                const idNomeInput = document.getElementById('idNomeInput');
+                const operacao = document.querySelector('input[name="operacao"]:checked').value;
+
+                const valor = parseFloat(valorInput.value);
+                const idOuNome = idNomeInput.value.trim();
+
+                let contaEncontrada = null;
+
+                if (!isNaN(parseInt(idOuNome))) {
+                    const id = parseInt(idOuNome);
+                    contaEncontrada = contas.find(conta => conta.id === id);
+                }
+
+                if (!contaEncontrada) {
+                    contaEncontrada = contas.find(conta => conta.nome.toLowerCase() === idOuNome.toLowerCase());
+                }
+
+                if (!contaEncontrada) {
+                    showAlert("Correntista não encontrado. Verifique o ID ou Nome e tente novamente.");
+                    return;
+                }
+
+                let operacaoRealizada = false;
+                if (operacao === 'credito') {
+                    operacaoRealizada = contaEncontrada.creditar(valor);
+                } else {
+                    operacaoRealizada = contaEncontrada.debitar(valor);
+                }
+
+                if (operacaoRealizada) {
+                    renderTable();
+                    valorInput.value = '';
+                    idNomeInput.value = '';
+                }
+            });
+
+            document.getElementById('criarContaBtn').addEventListener('click', () => {
+                const nomeInput = document.getElementById('novaContaNomeInput');
+                const saldoInput = document.getElementById('novaContaSaldoInput');
+
+                const nome = nomeInput.value.trim();
+                const saldo = parseFloat(saldoInput.value);
+
+                if (!nome) {
+                    showAlert("O nome do correntista não pode estar vazio.");
+                    return;
+                }
+                if (isNaN(saldo) || saldo < 0) {
+                    showAlert("O saldo inicial deve ser um número válido e maior ou igual a zero.");
+                    return;
+                }
+                if (contas.find(conta => conta.nome.toLowerCase() === nome.toLowerCase())) {
+                    showAlert("Já existe um correntista com este nome.");
+                    return;
+                }
+
+                const novoId = getNewId();
+                const novaConta = new Conta(novoId, nome, saldo);
+                contas.push(novaConta);
+
+                renderTable();
+
+                nomeInput.value = '';
+                saldoInput.value = '';
+
+                showAlert(`Conta para ${nome} criada com sucesso! ID: ${novoId}`);
+            });
+
+            document.getElementById('mostrarCriarContaBtn').addEventListener('click', () => {
+                const criarContaSection = document.getElementById('criarContaSection');
+                criarContaSection.classList.toggle('hidden');
+            });
+
+            renderTable();
+
+        </script>
+    </body>
+</html>
