@@ -71,9 +71,9 @@
             <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Controle de Contas Correntes</h1>
             <div class="bg-gray-100 p-6 rounded-lg mb-6 shadow-sm">
                 <h2 class="text-xl font-semibold mb-4 text-gray-700">Realizar Operação</h2>
-                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
-                    <input type="text" id="valorInput" placeholder="Valor" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <input type="text" id="idNomeInput" placeholder="ID ou Nome do Correntista" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-4">
+                    <input type="text" id="valorInput" placeholder="Valor" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full lg:w-auto">
+                    <input type="text" id="idNomeInput" placeholder="ID ou Nome do Correntista" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full lg:w-auto">
 
                     <div class="flex items-center space-x-4">
                         <label class="radio-label">
@@ -84,7 +84,7 @@
                         </label>
                     </div>
 
-                    <button id="operarBtn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+                    <button id="operarBtn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full lg:w-auto">
                         Crédito/Débito
                     </button>
                 </div>
@@ -179,11 +179,11 @@
             }
 
             const contas = [
-                new Conta(101, "Gael Brasileiro", 500.50),
-                new Conta(102, "Alexandre Florencio", 24250.75),
-                new Conta(103, "Renata Lucas", 31000.00),
-                new Conta(104, "Rafael Ximenes", 5670.00),
-                new Conta(105, "Gabriel Lima", 8190.25)
+                new Conta(101, "João Silva", 1500.50),
+                new Conta(102, "Maria Oliveira", 250.75),
+                new Conta(103, "Pedro Santos", 3000.00),
+                new Conta(104, "Ana Souza", 50.00),
+                new Conta(105, "Carlos Ferreira", 890.25)
             ];
 
             function getNewId() {
@@ -193,7 +193,7 @@
 
             function renderTable() {
                 const tbody = document.getElementById('contasTbody');
-                tbody.innerHTML = '';
+                tbody.innerHTML = ''; // Limpa o corpo da tabela
                 contas.forEach(conta => {
                     const row = document.createElement('tr');
                     row.className = 'table-row hover:bg-gray-50 transition-colors';
@@ -302,7 +302,6 @@
             });
 
             renderTable();
-
         </script>
     </body>
 </html>
