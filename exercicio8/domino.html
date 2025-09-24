@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burrinho Inteligente</title>
+    <link rel="stylesheet" href="domino.css">
+</head>
+<body>
+<h1>Burrinho Inteligente</h1>
+<div class="container">
+    <div id="tabuleiro"></div>
+    <div class="controles">
+        <button id="btn-jogar">Jogar</button>
+        <button id="btn-reiniciar" style="display: none;">Reiniciar Jogo</button>
+        <div id="modo-jogo">
+            <label for="modo-simulacao">Modo Simulação</label>
+            <input type="radio" id="modo-simulacao" name="modo" value="simulacao" checked>
+            <label for="modo-jogador">Modo Jogador</label>
+            <input type="radio" id="modo-jogador" name="modo" value="jogador">
+        </div>
+        <div id="escolha-jogador" style="display: none;">
+            <button id="btn-inicio">Encaixar na Esquerda</button>
+            <button id="btn-fim">Encaixar na Direita</button>
+        </div>
+    </div>
+    <div id="status"></div>
+</div>
+<script src="domino.js"></script>
+</body>
+</html>
