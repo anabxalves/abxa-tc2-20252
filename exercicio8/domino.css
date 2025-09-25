@@ -15,26 +15,27 @@ body {
     width: 80%;
 }
 
-#tabuleiro {
-    background-color: #eee;
-    border: 2px solid #333;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 20px;
-    min-height: 100px;
-    padding: 10px;
-}
-
-.peca {
+.containerPlacar {
     align-items: center;
     display: flex;
-    background-color: #ffe4b5;
-    border: 1px solid #666;
-    border-radius: 4px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    height: 30px;
-    width: 60px;
+    flex-direction: column;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.divisor-peca {
+    background-color: #666;
+    content: '';
+    height: 80%;
+    width: 1px;
+}
+
+.log-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
 }
 
 .metade {
@@ -45,20 +46,6 @@ body {
     height: 100%;
     justify-items: center;
     width: 50%;
-}
-
-.divisor-peca {
-    background-color: #666;
-    content: '';
-    height: 80%;
-    width: 1px;
-}
-
-.ponto {
-    background-color: black;
-    border-radius: 50%;
-    height: 5px;
-    width: 5px;
 }
 
 .metade-1 .ponto:nth-child(1) { grid-area: 2 / 2; }
@@ -87,3 +74,45 @@ body {
 .metade-6 .ponto:nth-child(5) { grid-area: 3 / 1; }
 .metade-6 .ponto:nth-child(4) { grid-area: 3 / 2; }
 .metade-6 .ponto:nth-child(6) { grid-area: 3 / 3; }
+
+.peca {
+    align-items: center;
+    display: flex;
+    background-color: #FFE4B5;
+    border: 1px solid #666666;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    height: 30px;
+    width: 60px;
+}
+
+.numero-placar {
+    align-items: center;
+    background-color: #666666;
+    border-radius: 4px;
+    color: #FFE4B5;
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    min-width: 2rem;
+    padding: 0.5rem;
+    width: 20%;
+}
+
+.ponto {
+    background-color: black;
+    border-radius: 50%;
+    height: 5px;
+    width: 5px;
+}
+
+#tabuleiro {
+    background-color: #eee;
+    border: 2px solid #333;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    padding: 10px;
+}

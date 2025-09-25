@@ -37,90 +37,168 @@ class Tabuleiro {
     }
 
     incluirDoInicio(peca) {
+        const novaCasa = new CasaTabuleiro(peca);
+
         if (this.tamanho === 0) {
-            this.inicio = new CasaTabuleiro(peca);
-            this.fim = this.inicio;
+            this.inicio = novaCasa;
+            this.fim = novaCasa;
             this.tamanho++;
             return 0;
         }
 
-        if (this.inicio.peca.esquerda === peca.esquerda) {
-            this.rotacionarPeca(peca);
-            const novaCasa = new CasaTabuleiro(peca);
-            novaCasa.proximo = this.inicio;
-            this.inicio.anterior = novaCasa;
-            this.inicio = novaCasa;
-            this.tamanho++;
-            return 2;
-        } else if (this.inicio.peca.esquerda === peca.direita) {
-            const novaCasa = new CasaTabuleiro(peca);
-            novaCasa.proximo = this.inicio;
-            this.inicio.anterior = novaCasa;
-            this.inicio = novaCasa;
-            this.tamanho++;
-            return 2;
+        if (this.tamanho === 1) {
+            if (this.inicio.peca.esquerda === peca.esquerda || this.inicio.peca.esquerda === peca.direita ||
+                this.inicio.peca.direita === peca.esquerda || this.inicio.peca.direita === peca.direita) {
+
+                this.inicio.proximo = novaCasa;
+                novaCasa.anterior = this.inicio;
+                this.fim = novaCasa;
+                this.tamanho++;
+                return 1;
+            }
         }
 
-        if (this.fim.peca.direita === peca.direita) {
-            this.rotacionarPeca(peca);
-            const novaCasa = new CasaTabuleiro(peca);
-            this.fim.proximo = novaCasa;
-            novaCasa.anterior = this.fim;
-            this.fim = novaCasa;
-            this.tamanho++;
-            return 1;
-        } else if (this.fim.peca.direita === peca.esquerda) {
-            const novaCasa = new CasaTabuleiro(peca);
-            this.fim.proximo = novaCasa;
-            novaCasa.anterior = this.fim;
-            this.fim = novaCasa;
-            this.tamanho++;
-            return 1;
+        if (this.tamanho > 1) {
+            if (this.inicio.peca.esquerda === peca.esquerda) {
+                this.rotacionarPeca(peca);
+                const novaCasa = new CasaTabuleiro(peca);
+                novaCasa.proximo = this.inicio;
+                this.inicio.anterior = novaCasa;
+                this.inicio = novaCasa;
+                this.tamanho++;
+                return 2;
+            } else if (this.inicio.peca.esquerda === peca.direita) {
+                const novaCasa = new CasaTabuleiro(peca);
+                novaCasa.proximo = this.inicio;
+                this.inicio.anterior = novaCasa;
+                this.inicio = novaCasa;
+                this.tamanho++;
+                return 2;
+            }
+
+            if (this.fim.peca.direita === peca.esquerda) {
+                const novaCasa = new CasaTabuleiro(peca);
+                this.fim.proximo = novaCasa;
+                novaCasa.anterior = this.fim;
+                this.fim = novaCasa;
+                this.tamanho++;
+                return 1;
+            } else if (this.fim.peca.direita === peca.direita) {
+                this.rotacionarPeca(peca);
+                const novaCasa = new CasaTabuleiro(peca);
+                this.fim.proximo = novaCasa;
+                novaCasa.anterior = this.fim;
+                this.fim = novaCasa;
+                this.tamanho++;
+                return 1;
+            }
+
+            let atual = this.inicio;
+            let casasAndadas = 0;
+            while (atual.proximo) {
+                if ((atual.peca.direita === peca.esquerda && atual.proximo.peca.esquerda === peca.direita) ||
+                    (atual.peca.direita === peca.direita && atual.proximo.peca.esquerda === peca.esquerda)) {
+
+                    if (atual.peca.direita === peca.direita) {
+                        this.rotacionarPeca(peca);
+                    }
+
+                    const novaCasa = new CasaTabuleiro(peca);
+                    novaCasa.proximo = atual.proximo;
+                    atual.proximo.anterior = novaCasa;
+                    atual.proximo = novaCasa;
+                    novaCasa.anterior = atual;
+                    this.tamanho++;
+                    return this.tamanho - casasAndadas - 1;
+                }
+                atual = atual.proximo;
+                casasAndadas++;
+            }
         }
 
         return -1;
     }
 
     incluirDoFim(peca) {
+        const novaCasa = new CasaTabuleiro(peca);
+
         if (this.tamanho === 0) {
-            this.inicio = new CasaTabuleiro(peca);
-            this.fim = this.inicio;
+            this.inicio = novaCasa;
+            this.fim = novaCasa;
             this.tamanho++;
             return 0;
         }
 
-        if (this.fim.peca.direita === peca.direita) {
-            this.rotacionarPeca(peca);
-            const novaCasa = new CasaTabuleiro(peca);
-            this.fim.proximo = novaCasa;
-            novaCasa.anterior = this.fim;
-            this.fim = novaCasa;
-            this.tamanho++;
-            return 1;
-        } else if (this.fim.peca.direita === peca.esquerda) {
-            const novaCasa = new CasaTabuleiro(peca);
-            this.fim.proximo = novaCasa;
-            novaCasa.anterior = this.fim;
-            this.fim = novaCasa;
-            this.tamanho++;
-            return 1;
+        if (this.tamanho === 1) {
+            if (this.inicio.peca.esquerda === peca.esquerda || this.inicio.peca.esquerda === peca.direita ||
+                this.inicio.peca.direita === peca.esquerda || this.inicio.peca.direita === peca.direita) {
+
+                novaCasa.proximo = this.inicio;
+                this.inicio.anterior = novaCasa;
+                this.inicio = novaCasa;
+                this.fim = this.inicio;
+                this.tamanho++;
+                return 1;
+            }
         }
 
-        if (this.inicio.peca.esquerda === peca.esquerda) {
-            this.rotacionarPeca(peca);
-            const novaCasa = new CasaTabuleiro(peca);
-            novaCasa.proximo = this.inicio;
-            this.inicio.anterior = novaCasa;
-            this.inicio = novaCasa;
-            this.tamanho++;
-            return 2;
-        } else if (this.inicio.peca.esquerda === peca.direita) {
-            const novaCasa = new CasaTabuleiro(peca);
-            novaCasa.proximo = this.inicio;
-            this.inicio.anterior = novaCasa;
-            this.inicio = novaCasa;
-            this.tamanho++;
-            return 2;
+
+        if (this.tamanho > 1) {
+            if (this.inicio.peca.esquerda === peca.esquerda) {
+                this.rotacionarPeca(peca);
+                const novaCasa = new CasaTabuleiro(peca);
+                novaCasa.proximo = this.inicio;
+                this.inicio.anterior = novaCasa;
+                this.inicio = novaCasa;
+                this.tamanho++;
+                return 2;
+            } else if (this.inicio.peca.esquerda === peca.direita) {
+                const novaCasa = new CasaTabuleiro(peca);
+                novaCasa.proximo = this.inicio;
+                this.inicio.anterior = novaCasa;
+                this.inicio = novaCasa;
+                this.tamanho++;
+                return 2;
+            }
+
+            if (this.fim.peca.direita === peca.esquerda) {
+                const novaCasa = new CasaTabuleiro(peca);
+                this.fim.proximo = novaCasa;
+                novaCasa.anterior = this.fim;
+                this.fim = novaCasa;
+                this.tamanho++;
+                return 1;
+            } else if (this.fim.peca.direita === peca.direita) {
+                this.rotacionarPeca(peca);
+                const novaCasa = new CasaTabuleiro(peca);
+                this.fim.proximo = novaCasa;
+                novaCasa.anterior = this.fim;
+                this.fim = novaCasa;
+                this.tamanho++;
+                return 1;
+            }
+
+            let atual = this.fim;
+            let casasAndadas = 0;
+            while (atual.anterior) {
+                if ((atual.anterior.peca.direita === peca.esquerda && atual.peca.esquerda === peca.direita) ||
+                    (atual.anterior.peca.direita === peca.direita && atual.peca.esquerda === peca.esquerda)) {
+
+                    if (atual.anterior.peca.direita === peca.direita) {
+                        this.rotacionarPeca(peca);
+                    }
+
+                    const novaCasa = new CasaTabuleiro(peca);
+                    novaCasa.proximo = atual;
+                    atual.anterior.proximo = novaCasa;
+                    novaCasa.anterior = atual.anterior;
+                    atual.anterior = novaCasa;
+                    this.tamanho++;
+                    return this.tamanho - casasAndadas - 1;
+                }
+                atual = atual.anterior;
+                casasAndadas++;
+            }
         }
 
         return -1;
@@ -137,6 +215,7 @@ class BurrinhoInteligente {
             btnJogar: document.getElementById('btn-jogar'),
             btnReiniciar: document.getElementById('btn-reiniciar'),
             status: document.getElementById('status'),
+            retornoContainer: document.getElementById('retorno-container'),
             modoSimulacaoRadio: document.getElementById('modo-simulacao'),
             modoJogadorRadio: document.getElementById('modo-jogador'),
             escolhaJogadorDiv: document.getElementById('escolha-jogador'),
@@ -181,7 +260,7 @@ class BurrinhoInteligente {
         this.tabuleiro = new Tabuleiro();
         this.pecasDisponiveis = this.gerarPecasDominos();
         this.ui.tabuleiro.innerHTML = '';
-        this.ui.status.textContent = 'Jogo reiniciado.';
+        this.ui.status.innerHTML = 'Jogo reiniciado.';
         this.ui.btnJogar.textContent = 'Jogar';
         this.ui.btnJogar.disabled = false;
         this.ui.btnInicio.disabled = false;
@@ -193,7 +272,7 @@ class BurrinhoInteligente {
         console.log(this.pecasNaoJogaveis);
 
         if (this.pecasDisponiveis.length === 0) {
-            this.ui.status.textContent = 'O conjunto de peças está vazio. O jogo terminou.';
+            this.ui.status.innerHTML = 'O conjunto de peças está vazio. O jogo terminou.';
             this.ui.btnReiniciar.style.display = 'block';
             this.ui.btnJogar.disabled = true;
             return;
@@ -201,17 +280,16 @@ class BurrinhoInteligente {
 
         const pecaSorteada = this.pecasDisponiveis.shift();
         this.pecaAtual = pecaSorteada;
-        this.ui.status.textContent = `Peça sorteada: ${this.pecaAtual.esquerda} - ${this.pecaAtual.direita}.`;
+        this.ui.status.innerHTML = `Peça sorteada: ${this.pecaAtual.esquerda} - ${this.pecaAtual.direita}.<br />`;
 
         if (!this.validarJogada(this.pecaAtual)) {
-            this.pecasDisponiveis.push(this.pecaAtual);
-            this.ui.status.textContent += ' Não há encaixe possível para esta peça. Peça devolvida ao conjunto.';
+            this.processarResultado(-1, this.pecaAtual);
             this.ui.btnJogar.disabled = false;
             this.embaralharPecas(this.pecasDisponiveis);
             this.pecasNaoJogaveis++;
 
             if (this.pecasNaoJogaveis >= this.pecasDisponiveis.length) {
-                this.ui.status.textContent = 'Nenhuma peça no conjunto pode ser encaixada. O jogo terminou.';
+                this.ui.status.innerHTML = `<strong>Nenhuma peça no conjunto pode ser encaixada. O jogo terminou.</strong>`;
                 this.ui.btnJogar.disabled = true;
                 this.ui.btnReiniciar.style.display = 'block';
                 return;
@@ -259,10 +337,10 @@ class BurrinhoInteligente {
         let resultado;
         if (tentarInicio) {
             resultado = this.tabuleiro.incluirDoInicio(this.pecaAtual);
-            this.ui.status.textContent += ` O computador tentou encaixar na esquerda.`;
+            this.ui.status.innerHTML += ` O computador tentou encaixar na esquerda.`;
         } else {
             resultado = this.tabuleiro.incluirDoFim(this.pecaAtual);
-            this.ui.status.textContent += ` O computador tentou encaixar na direita.`;
+            this.ui.status.innerHTML += ` O computador tentou encaixar na direita.`;
         }
         this.processarResultado(resultado, this.pecaAtual);
     }
@@ -271,9 +349,9 @@ class BurrinhoInteligente {
         this.tabuleiro = new Tabuleiro();
         this.pecasDisponiveis = this.gerarPecasDominos();
         this.ui.tabuleiro.innerHTML = '';
-        this.ui.status.textContent = 'Jogo reiniciado. Clique em "Jogar" para começar.';
+        this.ui.status.innerHTML = 'Jogo reiniciado. Clique em "Jogar" para começar.';
         this.ui.btnJogar.disabled = false;
-        this.ui.btnReiniciar.style.display = 'none'; // Esconde o botão de reiniciar
+        this.ui.btnReiniciar.style.display = 'none';
     }
 
     cabecaParaNumero(cabeca) {
@@ -326,13 +404,29 @@ class BurrinhoInteligente {
     }
 
     processarResultado(resultado, peca) {
+        this.ui.retornoContainer.innerHTML = '';
+
+        const containerPlacar = document.createElement('div');
+        containerPlacar.className = 'containerPlacar';
+
+        const textoPlacar = document.createElement('div');
+        textoPlacar.className = 'placar';
+        textoPlacar.innerHTML = 'RETORNO';
+
+        const numeroPlacar = document.createElement('div');
+        numeroPlacar.className = 'numero-placar';
+        numeroPlacar.innerHTML = `${resultado}`;
+
+        containerPlacar.appendChild(textoPlacar);
+        containerPlacar.appendChild(numeroPlacar);
+        this.ui.retornoContainer.appendChild(containerPlacar);
+
         if (resultado !== -1) {
-            this.ui.status.textContent += ` Peça encaixada com sucesso! Retorno: ${resultado}.`;
+            this.ui.status.innerHTML += ` <strong>Peça encaixada com sucesso!</strong>`;
             this.atualizarTabuleiroUI();
         } else {
-            this.pecasDisponiveis.unshift(peca);
-            this.ui.status.textContent += ' Peça não encaixou e foi devolvida ao conjunto.';
-            this.embaralharPecas(this.pecasDisponiveis);
+            this.pecasDisponiveis.push(peca);
+            this.ui.status.innerHTML += ` <strong>Peça não encaixou e foi devolvida ao conjunto.</strong>`;
         }
     }
 }
