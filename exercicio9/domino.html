@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burrinho Inteligente</title>
+    <link rel="stylesheet" href="domino.css">
+</head>
+<body>
+<div id="tela-inicial" class="tela-ativa">
+    <h1>Burrinho Inteligente</h1>
+    <div class="card">
+        <h2>Configuração do Jogo</h2>
+        <label for="max-rodadas">Quantidade de Rodadas:</label>
+        <input type="number" id="max-rodadas" value="10" min="1">
+        <button id="btn-iniciar">Iniciar Jogo</button>
+    </div>
+</div>
+
+<div id="tela-jogo" class="tela-inativa">
+    <h1>Burrinho Inteligente</h1>
+    <div class="game-container">
+        <div id="board-do-jogo">
+            <div id="tabuleiro"></div>
+            <div class="board-side" id="pecas-restantes">
+                <h3>Peças</h3>
+                <div id="pecas-restantes-container"></div>
+            </div>
+        </div>
+
+        <div class="info-area">
+            <div class="jogada-info-container">
+                <div class="jogada-info">
+                    <h3>Peça da vez</h3>
+                    <div id="peca-da-vez-container" class="peca-container"></div>
+                </div>
+                <div class="jogada-info">
+                    <h3>Encaixa?</h3>
+                    <span id="pode-encaixar"></span>
+                </div>
+            </div>
+
+            <div id="area-de-controle">
+                <div class="radio-group">
+                    <label>Direção:</label>
+                    <input type="radio" id="direcao-i" name="direcao" value="inicio" checked>
+                    <label for="direcao-i">Início</label>
+                    <input type="radio" id="direcao-f" name="direcao" value="fim">
+                    <label for="direcao-f">Fim</label>
+                </div>
+
+                <div class="placar-area">
+                    <div class="placar-card" id="placar-jogador1">
+                        <h3>Jogador</h3>
+                        <div class="placar-pontos">0</div>
+                    </div>
+                    <div class="placar-card" id="placar-jogador2">
+                        <h3>Simulador</h3>
+                        <div class="placar-pontos">0</div>
+                    </div>
+                </div>
+
+                <div class="botoes-jogada">
+                    <button id="btn-puxar">Puxar Peça</button>
+                    <button id="btn-jogar">Jogar Peça</button>
+                </div>
+                <button id="btn-novo-jogo">Novo Jogo</button>
+            </div>
+        </div>
+
+        <div id="log-do-jogo">
+            <h2>Log do Jogo</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Rodada</th>
+                    <th>Jogador</th>
+                    <th>Peça</th>
+                    <th>Direção</th>
+                    <th>Pontos</th>
+                </tr>
+                </thead>
+                <tbody id="log-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="domino.js"></script>
+</body>
+</html>

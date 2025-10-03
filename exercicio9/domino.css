@@ -1,0 +1,263 @@
+body {
+    align-items: center;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+.tela-ativa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tela-inativa {
+    display: none;
+}
+
+#tela-jogo {
+    width: 90%;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+#board-do-jogo {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+#tabuleiro {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #333;
+    min-height: 100px;
+    padding: 10px;
+    background-color: #eee;
+    gap: 5px;
+    flex: 1;
+}
+
+.board-side {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 150px;
+}
+
+#pecas-restantes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.info-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.jogada-info-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.jogada-info {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+#area-de-controle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.placar-area {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px;
+}
+
+.placar-card {
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 45%;
+}
+
+.placar-pontos {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.botoes-jogada {
+    display: flex;
+    gap: 10px;
+}
+
+#log-do-jogo {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.peca, .peca-pequena {
+    align-items: center;
+    display: flex;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background-color: #ffe4b5;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+}
+
+.peca {
+    width: 60px;
+    height: 30px;
+}
+
+.peca-pequena {
+    width: 30px;
+    height: 15px;
+}
+
+.metade {
+    width: 50%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.divisor-peca {
+    background-color: #666;
+    content: '';
+    height: 80%;
+    width: 1px;
+}
+
+.peca::before, .peca-pequena::before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background-color: #666;
+}
+
+.ponto {
+    background-color: black;
+    border-radius: 50%;
+}
+
+.peca .ponto { width: 5px; height: 5px; }
+.peca-pequena .ponto { width: 3px; height: 3px; }
+
+.metade-1 .ponto:nth-child(1) { grid-area: 2 / 2; }
+.metade-2 .ponto:nth-child(1) { grid-area: 1 / 1; }
+.metade-2 .ponto:nth-child(2) { grid-area: 3 / 3; }
+.metade-3 .ponto:nth-child(1) { grid-area: 1 / 1; }
+.metade-3 .ponto:nth-child(2) { grid-area: 2 / 2; }
+.metade-3 .ponto:nth-child(3) { grid-area: 3 / 3; }
+.metade-4 .ponto:nth-child(1) { grid-area: 1 / 1; }
+.metade-4 .ponto:nth-child(2) { grid-area: 1 / 3; }
+.metade-4 .ponto:nth-child(3) { grid-area: 3 / 1; }
+.metade-4 .ponto:nth-child(4) { grid-area: 3 / 3; }
+.metade-5 .ponto:nth-child(1) { grid-area: 1 / 1; }
+.metade-5 .ponto:nth-child(2) { grid-area: 1 / 3; }
+.metade-5 .ponto:nth-child(3) { grid-area: 2 / 2; }
+.metade-5 .ponto:nth-child(4) { grid-area: 3 / 1; }
+.metade-5 .ponto:nth-child(5) { grid-area: 3 / 3; }
+.metade-6 .ponto:nth-child(1) { grid-area: 1 / 1; }
+.metade-6 .ponto:nth-child(2) { grid-area: 1 / 2; }
+.metade-6 .ponto:nth-child(3) { grid-area: 1 / 3; }
+.metade-6 .ponto:nth-child(4) { grid-area: 3 / 1; }
+.metade-6 .ponto:nth-child(5) { grid-area: 3 / 2; }
+.metade-6 .ponto:nth-child(6) { grid-area: 3 / 3; }
+
+.jogador-1-turno, .jogador-2-peca {
+    border: 2px solid red;
+}
+.jogador-2-turno, .jogador-1-peca {
+    border: 2px solid blue;
+}
+.vencedor {
+    border: 2px solid green;
+}
+.perdedor {
+    border: 2px solid red;
+}
