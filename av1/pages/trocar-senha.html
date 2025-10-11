@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de Senha de Clientes</title>
+    <link rel="stylesheet" href="../styles/trocar-senha.css">
+</head>
+<body>
+    <a href="../index.html">
+        <img src="home-icon.png" alt="Página Inicial" class="home-icon">
+    </a>
+    <div class="troca-senha-container">
+        <h2>Troca de senha de clientes</h2>
+        <img src="logo.png" alt="Logo da Sua Empresa de TI" class="logo" style="max-width: 150px; margin-bottom: 20px;">
+        <form id="trocaSenhaForm">
+            <div class="input-group">
+                <label for="trocaSenhaLogin">E-mail (Login):</label>
+                <input type="email" id="trocaSenhaLogin" name="trocaSenhaLogin" placeholder="seuemail@exemplo.com">
+            </div>
+            <div class="input-group">
+                <label for="novaSenha">Nova Senha:</label>
+                <input type="password" id="novaSenha" name="novaSenha">
+            </div>
+            <div class="input-group">
+                <label for="confirmaSenha">Confirmação de Senha:</label>
+                <input type="password" id="confirmaSenha" name="confirmaSenha">
+            </div>
+            <div class="instrucoes-senha">
+                <p>A senha deve ter pelo menos 6 caracteres e conter:</p>
+                <ul>
+                    <li>Um caractere numérico (0-9).</li>
+                    <li>Uma letra maiúscula.</li>
+                    <li>Um dos caracteres especiais permitidos: `! ? / \ | - _ + . = @ # $ % & *`</li>
+                </ul>
+                <p>Os seguintes caracteres **não** são permitidos:
+                    ` ̈ { } [ ] ́  ` ~ ^ : ; < > , “ ‘`</p>
+            </div>
+            <div class="botoes-troca-senha">
+                <button type="submit" id="btn-troca-senha">Trocar Senha</button>
+                <button type="button" id="btn-limpar">Limpar</button>
+            </div>
+        </form>
+        <p id="mensagem-validacao"></p>
+    </div>
+    <script src="../scripts/contas.js"></script>
+    <script src="../scripts/login.js"></script>
+</body>
+</html>

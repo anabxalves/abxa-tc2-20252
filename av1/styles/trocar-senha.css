@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.troca-senha-container {
+    background-color: white;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+h2 {
+    font-family: 'Georgia', serif;
+    color: #003366;
+}
+
+.troca-senha-container input, .troca-senha-container button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.troca-senha-container button {
+    width: 48%;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+#btn-troca-senha {
+    background-color: #003366;
+    color: white;
+}
+
+#btn-limpar {
+    background-color: #ccc;
+}
+
+.instrucoes-senha {
+    text-align: left;
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    background-color: #f9f9f9;
+}
+
+#mensagem-validacao {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.home-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
