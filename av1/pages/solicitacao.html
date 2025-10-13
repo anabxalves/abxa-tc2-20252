@@ -7,18 +7,23 @@
     <link rel="stylesheet" href="../styles/solicitacao.css">
 </head>
 <body>
-    <a href="../index.html">
-        <img src="home-icon.png" alt="Página Inicial" class="home-icon">
+<div class="solicitacao-page">
+    <a href="../index.html" class="home-icon-link">
+        <img src="../images/home-icon.png" alt="Página Inicial" class="home-icon">
     </a>
-    <div class="container">
-        <div class="secao">
-            <h2>Dados do Cliente</h2>
-            <p><strong>Nome:</strong> <span id="nome-usuario"></span></p>
-            <p><strong>Login:</strong> <span id="login-usuario"></span></p>
+    <div class="solicitacao-container">
+        <div class="header-solicitacao">
+            <h2>Minhas Solicitações de Serviço</h2>
         </div>
 
-        <div class="secao">
-            <h2>Minhas Solicitações</h2>
+        <section class="section-cliente">
+            <h3>Dados do Cliente</h3>
+            <p><strong>Nome:</strong> <span id="nome-usuario"></span></p>
+            <p><strong>Login:</strong> <span id="login-usuario"></span></p>
+        </section>
+
+        <section class="section-solicitacoes">
+            <h3>Histórico de Solicitações</h3>
             <table id="tabela-solicitacoes">
                 <thead>
                 <tr>
@@ -34,13 +39,13 @@
                 <tbody>
                 </tbody>
             </table>
-        </div>
+        </section>
 
-        <div class="secao">
-            <h2>Nova Solicitação</h2>
+        <section class="section-nova-solicitacao">
+            <h3>Nova Solicitação</h3>
             <form id="nova-solicitacao-form" class="nova-solicitacao-form">
                 <div class="input-group">
-                    <label for="servico-ti">Serviço de TI:</label>
+                    <label for="servico-ti">Serviço de TI</label>
                     <select id="servico-ti" name="servico-ti">
                         <option value="">Selecione um serviço</option>
                         <option value="manutencao">Manutenção de Computadores</option>
@@ -49,32 +54,33 @@
                     </select>
                 </div>
 
-                <div class="input-group">
-                    <label for="preco-servico">Preço:</label>
-                    <span id="preco-servico"></span>
+                <div class="info-group">
+                    <div>
+                        <label for="preco-servico">Preço</label>
+                        <span id="preco-servico"></span>
+                    </div>
+                    <div>
+                        <label for="prazo-atendimento">Prazo de Atendimento</label>
+                        <span id="prazo-atendimento"></span>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="prazo-atendimento">Prazo de Atendimento:</label>
-                    <span id="prazo-atendimento"></span>
+                <div class="info-group">
+                    <div>
+                        <label for="data-prevista">Data Prevista de Atendimento</label>
+                        <span id="data-prevista"></span>
+                    </div>
+                    <div>
+                        <label for="status-solicitacao">Status</label>
+                        <span id="status-solicitacao">EM ELABORAÇÃO</span>
+                    </div>
                 </div>
-
-                <div class="input-group">
-                    <label for="data-prevista">Data Prevista de Atendimento:</label>
-                    <span id="data-prevista"></span>
-                </div>
-
-                <div class="input-group">
-                    <label for="status-solicitacao">Status:</label>
-                    <span id="status-solicitacao">EM ELABORAÇÃO</span>
-                </div>
-
                 <button type="submit" id="btn-incluir-solicitacao">Incluir Solicitação</button>
             </form>
-        </div>
+        </section>
     </div>
-
-    <script src="../scripts/contas.js"></script>
-    <script src="../scripts/solicitacao.js"></script>
+</div>
+<script src="../scripts/contas.js"></script>
+<script src="../scripts/solicitacao.js"></script>
 </body>
 </html>

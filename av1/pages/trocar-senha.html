@@ -7,23 +7,26 @@
     <link rel="stylesheet" href="../styles/trocar-senha.css">
 </head>
 <body>
-    <a href="../index.html">
-        <img src="home-icon.png" alt="Página Inicial" class="home-icon">
+<div class="troca-senha-page">
+    <a href="../index.html" class="home-icon-link">
+        <img src="../images/home-icon.png" alt="Página Inicial" class="home-icon">
     </a>
     <div class="troca-senha-container">
-        <h2>Troca de senha de clientes</h2>
-        <img src="logo.png" alt="Logo da Sua Empresa de TI" class="logo" style="max-width: 150px; margin-bottom: 20px;">
+        <div class="header-troca-senha">
+            <img src="../images/logo.png" alt="Logo da Sua Empresa de TI" class="logo-troca-senha">
+            <h2>Troca de senha de clientes</h2>
+        </div>
         <form id="trocaSenhaForm">
             <div class="input-group">
-                <label for="trocaSenhaLogin">E-mail (Login):</label>
+                <label for="trocaSenhaLogin">E-mail (Login)</label>
                 <input type="email" id="trocaSenhaLogin" name="trocaSenhaLogin" placeholder="seuemail@exemplo.com">
             </div>
             <div class="input-group">
-                <label for="novaSenha">Nova Senha:</label>
+                <label for="novaSenha">Nova Senha</label>
                 <input type="password" id="novaSenha" name="novaSenha">
             </div>
             <div class="input-group">
-                <label for="confirmaSenha">Confirmação de Senha:</label>
+                <label for="confirmaSenha">Confirmação de Senha</label>
                 <input type="password" id="confirmaSenha" name="confirmaSenha">
             </div>
             <div class="instrucoes-senha">
@@ -43,7 +46,8 @@
         </form>
         <p id="mensagem-validacao"></p>
     </div>
-    <script src="../scripts/contas.js"></script>
-    <script src="../scripts/login.js"></script>
+</div>
+<script src="../scripts/contas.js"></script>
+<script src="../scripts/trocar-senha.js"></script>
 </body>
 </html>

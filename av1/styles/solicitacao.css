@@ -1,43 +1,95 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
 }
 
-.container {
+.solicitacao-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.home-icon-link {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.home-icon {
+    width: 2.5rem;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.home-icon:hover {
+    transform: scale(1.1);
+}
+
+.solicitacao-container {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
     max-width: 960px;
     margin: auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+.header-solicitacao {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h2, h3 {
+    font-family: 'Georgia', serif;
     color: #003366;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
-.secao {
-    margin-bottom: 40px;
-    padding: 20px;
-    border: 1px solid #ccc;
+section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #e0e6ef;
     border-radius: 8px;
+    background-color: #fafbfd;
+}
+
+.section-cliente {
+    background-color: #e6f0ff;
+    border-color: #c4d7f5;
+}
+
+.section-cliente p {
+    margin: 0.5rem 0;
 }
 
 #tabela-solicitacoes {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 1rem;
 }
 
 #tabela-solicitacoes th, #tabela-solicitacoes td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 0.8rem;
     text-align: left;
+    font-size: 0.9rem;
 }
 
 #tabela-solicitacoes th {
-    background-color: #f2f2f2;
+    background-color: #003366;
+    color: white;
+    font-weight: 600;
 }
 
 .botoes-tabela {
@@ -48,32 +100,62 @@ h1, h2 {
     background-color: #dc3545;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 0.4rem 0.8rem;
     cursor: pointer;
     border-radius: 4px;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
 }
 
-.nova-solicitacao-form .input-group {
-    margin-bottom: 15px;
+.botoes-tabela button:hover {
+    background-color: #c82333;
 }
 
-.nova-solicitacao-form label {
+.nova-solicitacao-form .input-group, .info-group {
+    margin-bottom: 1.5rem;
+}
+
+.info-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-group label, .info-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
 }
 
-.nova-solicitacao-form select, .nova-solicitacao-form input {
+.nova-solicitacao-form select {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.8rem;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.nova-solicitacao-form select:focus {
+    outline: none;
+    border-color: #007bff;
 }
 
 #btn-incluir-solicitacao {
-    background-color: #007bff;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #003366;
     color: white;
-    padding: 10px 20px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#btn-incluir-solicitacao:hover {
+    background-color: #004080;
 }

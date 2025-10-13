@@ -7,19 +7,22 @@
     <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
-    <a href="../index.html">
-        <img src="home-icon.png" alt="Página Inicial" class="home-icon">
+<div class="login-page">
+    <a href="../index.html" class="home-icon-link">
+        <img src="../images/home-icon.png" alt="Página Inicial" class="home-icon">
     </a>
     <div class="login-container">
-        <h2>Login de Clientes</h2>
-        <img src="logo.png" alt="Logo da Sua Empresa de TI" class="logo" style="max-width: 150px; margin-bottom: 20px;">
+        <div class="header-login">
+            <img src="../images/icon.png" alt="Logo da Sua Empresa de TI" class="logo-login">
+            <h2>Login de Clientes</h2>
+        </div>
         <form id="loginForm">
             <div class="input-group">
-                <label for="loginEmail">E-mail (Login):</label>
+                <label for="loginEmail">E-mail (Login)</label>
                 <input type="email" id="loginEmail" name="loginEmail" placeholder="seuemail@exemplo.com">
             </div>
             <div class="input-group">
-                <label for="loginSenha">Senha:</label>
+                <label for="loginSenha">Senha</label>
                 <input type="password" id="loginSenha" name="loginSenha">
             </div>
             <div class="botoes-login">
@@ -34,7 +37,8 @@
             <a href="cadastro.html">Não tem uma conta? Cadastre-se</a>
         </div>
     </div>
-    <script src="../scripts/contas.js"></script>
-    <script src="../scripts/login.js"></script>
+</div>
+<script src="../scripts/contas.js"></script>
+<script src="../scripts/login.js"></script>
 </body>
 </html>
