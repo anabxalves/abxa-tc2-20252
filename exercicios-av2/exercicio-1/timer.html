@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three-Mode Timer</title>
+    <link rel="stylesheet" href="timer.css">
+</head>
+<body>
+    <div class="display-container">
+        <div id="displayLabel">hh:mm:ss:ms</div>
+        <div id="timerDisplay">00:00:00:00</div>
+    </div>
+
+    <div class="control-panel">
+        <div class="mode-column" id="column-1" data-mode="1">
+            <h3>1. PROGRESSIVO</h3>
+            <p>Comece do zero e conte para cima.</p>
+            <div class="controls">
+                <button class="button-I" data-action="start" data-mode="1">I - INÍCIO</button>
+                <button class="button-P" data-action="stop" data-mode="1">P - PARADA</button>
+                <button class="button-F" data-action="reset" data-mode="1">F - FINAL (Reset)</button>
+            </div>
+        </div>
+
+        <div class="mode-column" id="column-2" data-mode="2">
+            <h3>2. REGRESSIVO (DURAÇÃO)</h3>
+            <div class="input-group">
+                <label>Duração:</label>
+                <input type="number" id="input2Hours" min="0" value="0" placeholder="H">
+                <input type="number" id="input2Minutes" min="0" max="59" value="1" placeholder="M">
+                <input type="number" id="input2Seconds" min="0" max="59" value="0" placeholder="S">
+            </div>
+            <div class="controls">
+                <button class="button-I" data-action="start" data-mode="2">I - INÍCIO</button>
+                <button class="button-P" data-action="stop" data-mode="2">P - PARADA</button>
+                <button class="button-F" data-action="reset" data-mode="2">F - FINAL (Reset)</button>
+            </div>
+        </div>
+
+        <div class="mode-column" id="column-3" data-mode="3">
+            <h3>3. REGRESSIVO (TEMPO FINAL)</h3>
+            <div class="input-group">
+                <label>Tempo Final:</label>
+                <input type="number" id="input3Hours" min="0" max="23" placeholder="H">
+                <input type="number" id="input3Minutes" min="0" max="59" placeholder="M">
+                <input type="number" id="input3Seconds" min="0" max="59" value="0" placeholder="S">
+            </div>
+            <div class="controls">
+                <button class="button-I" data-action="start" data-mode="3">I - INÍCIO</button>
+                <button class="button-P" data-action="stop" data-mode="3">P - PARADA</button>
+                <button class="button-F" data-action="reset" data-mode="3">F - FINAL (Reset)</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="timer.js"></script>
+</body>
+</html>
