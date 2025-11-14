@@ -1,8 +1,6 @@
 # Meios de Pagamento (CRUD)
 
-> Projeto Fullstack - React & Node.js/SQLite)
-
-Este projeto foi desenvolvido como atividade avaliativa para a disciplina de Programação Frontend na CESAR School., com o intuito de desenvover uma aplicação fullstack para gerenciamento de Meios de Pagamento (CRUD: Criar, Ler, Atualizar, Excluir).
+Este projeto foi desenvolvido como atividade avaliativa para a disciplina de Programação Frontend na CESAR School, com o intuito de desenvolver uma aplicação fullstack para gerenciamento de Meios de Pagamento (CRUD: Criar, Ler, Atualizar, Excluir).
 
 O projeto é dividido em dois serviços distintos:
 1.  **Frontend (`payment-crud`):** Interface do usuário construída com React e Vite.
