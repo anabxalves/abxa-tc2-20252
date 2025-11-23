@@ -1,0 +1,204 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.solicitacao-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.home-icon {
+    width: 2.5rem;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.home-icon:hover {
+    transform: scale(1.1);
+}
+
+.solicitacao-container {
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    padding: 2.5rem;
+    margin: auto;
+    width: 100%;
+}
+
+.header-solicitacao {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: -webkit-fill-available;
+}
+
+h2, h3 {
+    font-family: 'Georgia', serif;
+    color: #003366;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #e0e6ef;
+    border-radius: 8px;
+    background-color: #fafbfd;
+    width: -webkit-fill-available;
+}
+
+.section-cliente {
+    background-color: #e6f0ff;
+    border-color: #c4d7f5;
+}
+
+.section-cliente p {
+    margin: 0.5rem 0;
+}
+
+#tabela-solicitacoes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#tabela-solicitacoes th, #tabela-solicitacoes td {
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+#tabela-solicitacoes th {
+    background-color: #003366;
+    color: white;
+    font-weight: 600;
+}
+
+.botoes-tabela {
+    text-align: center;
+}
+
+.botoes-tabela button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+}
+
+.botoes-tabela button:hover {
+    background-color: #c82333;
+}
+
+.nova-solicitacao-form .input-group, .info-group {
+    margin-bottom: 1.5rem;
+}
+
+.info-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-group label, .info-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.nova-solicitacao-form select {
+    width: 100%;
+    padding: 0.8rem;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.nova-solicitacao-form select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#btn-incluir-solicitacao {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #003366;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#btn-incluir-solicitacao:hover {
+    background-color: #004080;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .solicitacao-page {
+        min-height: auto;
+    }
+
+    .solicitacao-container {
+        padding: 1rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .home-icon-link {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .info-group {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .section-solicitacoes {
+        overflow-x: auto;
+        padding: 0 0.5rem;
+        border-radius: 0;
+        border: none;
+    }
+
+    #tabela-solicitacoes {
+        min-width: 700px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h2, h3 {
+        font-size: 1.5rem;
+    }
+}

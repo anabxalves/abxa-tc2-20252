@@ -1,0 +1,147 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.mensagem-in-line-error {
+    background-color: #debdc3;
+    color: red;
+    display: flex;
+    padding: 1rem;
+}
+
+.home-icon {
+    width: 2.5rem;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.home-icon:hover {
+    transform: scale(1.1);
+}
+
+.login-container {
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    padding: 2.5rem;
+    text-align: center;
+    width: 100%;
+}
+
+.header-login {
+    margin-bottom: 2rem;
+    width: -webkit-fill-available;
+}
+
+.logo-login {
+    max-width: 100px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: 'Georgia', serif;
+    color: #003366;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.botoes-login {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.botoes-login button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#btn-login {
+    background-color: #003366;
+    color: white;
+}
+
+#btn-login:hover {
+    background-color: #004080;
+}
+
+#btn-limpar {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+#btn-limpar:hover {
+    background-color: #dee2e6;
+}
+
+#loginForm {
+    width: -webkit-fill-available;
+}
+
+#mensagem-validacao {
+    margin-top: 1.5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.links-adicionais {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    width: -webkit-fill-available;
+}
+
+.links-adicionais a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.links-adicionais a:hover {
+    text-decoration: underline;
+}

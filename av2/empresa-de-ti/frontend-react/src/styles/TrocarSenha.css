@@ -1,0 +1,141 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.troca-senha-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.home-icon {
+    width: 2.5rem;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.home-icon:hover {
+    transform: scale(1.1);
+}
+
+.troca-senha-container {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 550px;
+}
+
+.header-troca-senha {
+    margin-bottom: 2rem;
+}
+
+.logo-troca-senha {
+    max-width: 100px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: 'Georgia', serif;
+    color: #003366;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.instrucoes-senha {
+    text-align: left;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px dashed #ccc;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.instrucoes-senha ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.botoes-troca-senha {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.botoes-troca-senha button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#btn-troca-senha {
+    background-color: #003366;
+    color: white;
+}
+
+#btn-troca-senha:hover {
+    background-color: #004080;
+}
+
+#btn-limpar {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+#btn-limpar:hover {
+    background-color: #dee2e6;
+}
+
+#mensagem-validacao {
+    margin-top: 1.5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
