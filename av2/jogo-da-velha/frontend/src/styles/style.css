@@ -1,0 +1,189 @@
+:root {
+    --color-accent-blue: #0a84ff;
+    --color-bg-primary: #1c1c1e;
+    --color-bg-secondary: #2c2c2e;
+    --color-error-red: #ff453a;
+    --color-line: #3a3a3c;
+    --color-text-light: #f2f2f7;
+    --color-win-green: #30d158;
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body {
+    align-items: center;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-light);
+    display: flex;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+}
+
+#root {
+    max-width: 450px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+input[type="text"] {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: var(--color-text-light);
+    font-size: 1em;
+    margin-bottom: 15px;
+    padding: 12px;
+    width: 100%;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-accent-blue);
+    box-shadow: var(--shadow-subtle);
+    color: white;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 15px;
+    transition: opacity 0.2s, background-color 0.2s;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.tabuleiro-grid {
+    background-color: var(--color-bg-secondary);
+    border-collapse: collapse;
+    border-radius: 12px;
+    box-shadow: var(--shadow-subtle);
+    margin: 30px auto;
+}
+
+.tabuleiro-grid td {
+    border: 1px solid var(--color-line);
+    color: var(--color-accent-blue);
+    cursor: pointer;
+    font-size: 4.5em;
+    font-weight: 700;
+    height: 100px;
+    line-height: 100px;
+    transition: background-color 0.15s;
+    width: 100px;
+}
+
+.tabuleiro-grid td:hover {
+    background-color: #38383a;
+}
+
+.jogador-turno {
+    background-color: var(--color-bg-secondary);
+    border: 2px solid var(--color-win-green);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.placar-info {
+    align-items: center;
+    background-color: var(--color-bg-secondary);
+    border-radius: 10px;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.placar-info .jogador-box {
+    align-items: center;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem;
+    min-width: 10rem;
+    justify-content: space-evenly;
+}
+
+.jogador-x { flex-direction: row; }
+.jogador-o { flex-direction: row-reverse; }
+
+.placar-info .pontuacao {
+    color: var(--color-win-green);
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.turno-atual {
+    color: var(--color-text-light);
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.turno-seu {
+    color: var(--color-win-green);
+    font-weight: bold;
+}
+
+.turno-oponente {
+    color: var(--color-text-light);
+    font-weight: lighter;
+    font-style: italic;
+    text-shadow: 1px 1px var(--color-line);
+}
+
+.simbolo-animado {
+    animation: fade-in-scale 0.3s ease-out forwards;
+}
+
+.home-main-icon {
+    max-width: 15rem;
+    width: 100%;
+}
+.player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.celula-vencedora {
+    color: var(--color-win-green) !important;
+    background-color: #38383a;
+    animation: pulse-win 1.5s infinite alternate;
+    z-index: 10;
+}
+
+.cabecalho-icon {
+    align-items: center;
+    background-color: var(--color-line);
+    border-radius: 50%;
+    color: var(--color-accent-blue);
+    display: flex;
+    font-weight: 700;
+    font-size: 2rem;
+    height: 3rem;
+    justify-content: center;
+    padding: 0.5rem;
+    width: 3rem;
+}
+
+@keyframes pulse-win {
+    from { box-shadow: 0 0 5px var(--color-win-green); }
+    to { box-shadow: 0 0 15px var(--color-win-green), 0 0 10px rgba(48, 209, 88, 0.5); }
+}
+
+@keyframes fade-in-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
