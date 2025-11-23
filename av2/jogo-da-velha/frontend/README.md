@@ -1,16 +1,51 @@
-# React + Vite
+# Frontend: Interface Unificada (React/Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O Frontend do projeto foi construído em React com Vite e utiliza CSS puro, sendo responsável pela interface do usuário e pela tradução de eventos (cliques) em ações de rede ou ações de estado local.
 
-Currently, two official plugins are available:
+## Arquivos e Funções Principais
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O código é dividido em `pages/`, `components/`, e `api/` para garantir a modularidade e a separação de responsabilidades.
 
-## React Compiler
+### Módulos de Comunicação (`/src/api`)
+| Arquivo | Responsabilidade | Modo de Uso |
+| :--- | :--- | :--- |
+| `useWebSocket.js` | Conexão e sincronização com o **Backend**. Recebe o estado do jogo via WebSockets. | ONLINE |
+| `useLocalGame.js` | Lógica de estado completa para o **Jogo Local**. Duplica a lógica de regras para evitar latência de rede. | LOCAL |
+| `useGameEngine.js` | **Motor de Jogo Central.** Decide qual hook (WebSocket ou Local) usar e padroniza o `gameState` para a interface. | Ambos |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Páginas (`/src/pages`)
+| Arquivo | Descrição |
+| :--- | :--- |
+| `PaginaInicial.jsx` | Permite ao usuário inserir nomes e selecionar o modo de jogo (`LOCAL` ou `ONLINE`). |
+| `PaginaJogo.jsx` | **Página Unificada.** Renderiza a interface do tabuleiro, placar e botões de controle, usando o estado fornecido pelo `useGameEngine`. |
 
-## Expanding the ESLint configuration
+### Componentes (`/src/components`)
+| Componente | Requisito Cumprido                                                                                |
+| :--- |:--------------------------------------------------------------------------------------------------|
+| `Tabuleiro.jsx` | Renderiza a estrutura semântica `<table>` (Tabela Dinâmica).                                      |
+| `Celula.jsx` | Gerencia o `handleClick` (Resposta a Eventos) e aplica a classe de animação (`celula-vencedora`). |
+| `CabecalhoPlacar.jsx`| Exibe o placar e aplica o destaque de turno (`jogador-turno`).                                    |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Estilização
+
+O estilo é puramente CSS (`/src/styles/style.css`), seguindo um padrão **Dark Mode Minimalista**, o que atende à proibição de bibliotecas de terceiros (Bootstrap, Tailwind, etc.).
+
+---
+
+##  Como Rodar Localmente (Cliente)
+
+### 1. Preparação
+
+Certifique-se de que o Backend (FastAPI) esteja **ativo** e rodando na porta `8000` na sua rede.
+
+### 2. Comando de Inicialização
+
+Execute o comando de desenvolvimento do Vite:
+
+```bash
+    # Certifique-se de estar no diretório /frontend
+    npm install
+    npm run dev
+```
+
+Após isso, o Frontend estará acessível via navegador (geralmente em http://localhost:5173).

@@ -41,9 +41,6 @@ function CabecalhoPlacar({ jogadores, turnoAtual, meuSimbolo, vencedorSerie, sho
                     </span>
                 </h3> : null
             )}
-
-            <ol className="log-rodadas">
-            </ol>
         </div>
     );
 }
